@@ -1,0 +1,19 @@
+
+ETS application takes into account the pausing and restarting of the "turnaround clock" and thus does not reflect calendar days used if the clock was paused for any length of time of 1 day or more.  This value is stored in the days_used_qty field of the table dbo.activity_task_list.  Prior to ETS, users used a windows client application called TEMPO that also populated this same dbo.activity_task_list table.  ETS, which is a web application, only uses the days_used_qty field for this purpose now.
+
+For activities that were configured to use the "clock", days_used_qty field is used in the reports.
+For activities that were NOT configured to use the clock, then the calendar days used is calculated instead.
+
+The relevant objects in the database in regards to clocks are the following:
+
+1. dbo.activity_task_list
+2. dbo.mtb_defined_task_list
+3. dbo.mtb_defined_task_extend_list
+4. dbo.[WORKACTIVITYLOG_UPDATE_CLOCK_DATA] -- procedure
+
+The table mtb_defined_task_extend_list table identifies the activities that have the pausing and resuming of the clocks.
+
+The field ext_reference_task_id has the reference_task_id to resume the clock.
+The field pred_reference_task_id has the reference_task_id to pause the clock.
+The prim_reference_task_id has the reference_task_id to permanently stop the clock when the permit is issued (1000000002).
+

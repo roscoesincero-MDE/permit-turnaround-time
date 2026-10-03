@@ -1,0 +1,15 @@
+# Python bytecode from the SQL validation hook
+__pycache__/
+*.pyc
+
+# Per-user Claude Code settings
+.claude/settings.local.json
+
+# Report Builder / SSRS preview cache
+*.rdl.data
+
+# Local working files, not part of the project
+/Protect main.json
+/Results.csv
+/OIMT Requirements for PLC Reports - Scrap Tires.docx
+/plc-scrap-tire-requirements-analysis.md
